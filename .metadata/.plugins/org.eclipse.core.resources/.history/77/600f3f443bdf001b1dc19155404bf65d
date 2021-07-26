@@ -1,0 +1,17 @@
+package tester;
+
+import utils.CollectionUtil;
+import utils.IOUtils;
+import java.util.HashMap;
+import com.app.core.Book;
+
+public class BookCollectionTester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		HashMap<String,Book> hM = CollectionUtil.populateMap();
+		IOUtils.storeBooks(hM, "BooksCollection");
+		System.out.println("Program finished");
+	}
+
+}

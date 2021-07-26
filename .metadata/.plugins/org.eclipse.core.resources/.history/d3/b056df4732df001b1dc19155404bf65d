@@ -1,0 +1,30 @@
+package com.app.core;
+
+import java.time.LocalDate;
+
+public class Book {
+	private String title;
+	private Category cat;
+	private double price;
+	private String author;
+	private LocalDate publishDate;
+	private int quantity;
+	
+	public Book(String title, Category cat, double price, String author, LocalDate dt, int quantity) {
+		this.title = title;
+		this.cat = cat;
+		this.price = price;
+		this.author = author;
+		this.publishDate = dt;
+		this.quantity = quantity;
+	}
+	
+	@Override
+	public String toString() {
+		return "Book : [title=" + this.title+", category=" + this.cat + ", price=" + this.price
+				+ ", author=" + this.author + ", publish date=" + this.publishDate
+				+ ", quantity=" + this.quantity;
+	}
+	
+	
+}

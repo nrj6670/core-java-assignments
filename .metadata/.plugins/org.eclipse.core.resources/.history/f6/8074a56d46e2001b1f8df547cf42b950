@@ -1,0 +1,59 @@
+package tester;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+import com.app.core.Book;
+import static utils.CollectionUtils.populateMap;
+import utils.BookHandlingException;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		//HashMap of key as "book title" and value as "book detail"
+		HashMap<String, Book> bookCollection = (HashMap<String, Book>) populateMap();
+		
+		//a list to store the books added to the cart
+		List<Book> cart = new ArrayList<Book>();
+		
+		//boolean varible to exit loop 
+		boolean exitLoop = false;
+		
+		while(!exitLoop) {
+			try(Scanner sc = new Scanner(System.in)) {
+				System.out.println("***** THE BOOK STORE *****");
+				System.out.println("\n1. Display all book in the store\n2. Add book to cart\n"
+						+ "3. Show cart content\n4. Check out(exit)\n\nEnter your choice : ");
+				
+				int choice = sc.nextInt();
+				
+				switch(choice) {
+					case 1:
+						System.out.println("\nList of all the books in the store : ");
+						bookCollection.values().stream().forEach(System.out::println);
+						break;
+						
+					case 2:
+						System.out.println("Enter book name to add to the cart : ");
+						String bookTitle = sc.nextLine();
+						
+						if(!bookCollection.containsKey(bookTitle)) {
+							throw new BookHandlingException("Book not found in the store");
+						}
+						
+						cart.add(bookCollection.get(bookTitle));
+						break;
+						
+					case 3:
+						System.out.println("\nCart content : ");
+						cart.stream().forEach(System.out::println);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

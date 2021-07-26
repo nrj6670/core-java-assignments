@@ -1,0 +1,8 @@
+package com.app.employee;
+
+public interface Stack {
+	int STACK_SIZE = 3;
+	
+	void push(Employee data);
+	Employee pop();
+}

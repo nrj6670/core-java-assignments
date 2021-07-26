@@ -1,0 +1,17 @@
+package utils;
+
+import com.app.core.Book;
+
+import java.util.Map;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class IOUtils {
+	public static void storeBook(Map<String, Book> bookCollection, String fileName) throws FileNotFoundException, IOException {
+		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+			oos.writeObject(bookCollection);
+		}
+	}
+}
